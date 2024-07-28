@@ -47,6 +47,7 @@ button {
 
 .shuffle-button:hover{
 	background-color: #ddc;
+	font-weight: bold;
 }
 
 #likeCount {
