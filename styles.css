@@ -23,11 +23,30 @@ body {
 }
 
 button {
-	width: 2.5rem;
+	border: none;
+	color: #bd0045;
+	background: none;
+	font-size: 1rem;
+}
+
+.button-clicked {
+	background-color: rgba(180,0,69,0.2);
 }
 
 .button-holder {
 	margin-left: auto;
+}
+
+.shuffle-button {
+	background-color: #ddd;
+	color: #4a1a55;
+	border: none;
+	border-radius: 5px;
+	padding: 5px 8px;
+}
+
+.shuffle-button:hover{
+	background-color: #ddc;
 }
 
 #likeCount {
@@ -107,8 +126,9 @@ button {
 }
 
 .modal-content-top img {
-	/* width: 18em; */
-	padding: 15px;
+	width: 275px;
+	border-radius: 1.75rem;
+	aspect-ratio: 1;
 }
 
 .modal-content-top-text {
@@ -142,11 +162,18 @@ button {
 }
 
 .modal-song img {
-	max-height: 100px;
+	max-height: 80px;
+	border-radius: 0.5rem;
+	aspect-ratio: 6.5/5;
 }
 
 .modal-song-text > * {
 	margin: 4px 2rem;
+}
+
+.modal-song-text > p:first-child {
+	font-size: 1.1rem;
+	font-weight: bold;
 }
 
 #songDuration {

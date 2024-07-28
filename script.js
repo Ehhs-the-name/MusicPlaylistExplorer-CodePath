@@ -1,7 +1,5 @@
-// console.log(data.playlists[0]);
-
+// Playlist things - playlist Iniitalization + button set up inside
 let playlists = data.playlists;
-// console.log(playlists);
 
 let playlistCards = document.getElementById("playlistCards");
 
@@ -38,16 +36,26 @@ function playlistsShower() {
 		buttonHolder.appendChild(likeCounter);
 
 		let likeCountBtn = document.createElement("button");
-		likeCountBtn.id = likeCountBtn;
-		likeCountBtn.innerHTML = "&lt;3";
+		likeCountBtn.id = "likeCountBtn";
+		likeCountBtn.innerHTML = "♥";
 		buttonHolder.appendChild(likeCountBtn);
 
 		playlistImage.onclick = function() {
 			openModal(playlist.songs, playlist);
-			
+		}
+
+		likeCountBtn.onclick = function() {
+			if (likeCountBtn.classList.contains("button-clicked")) {
+				likeCountBtn.classList.remove("button-clicked");
+				decreaseLikeCount(playlist);
+				likeCounter.innerText = playlist.likeCount;
+			} else {
+				likeCountBtn.classList.add("button-clicked");
+				increaseLikeCount(playlist);
+				likeCounter.innerText = playlist.likeCount;
+			}
 		}
 	}
-
 }
 
 playlistsShower();
@@ -57,16 +65,21 @@ playlistsShower();
 var modal = document.getElementById("songModal");
 var span = document.getElementsByClassName("close")[0];
 let mSongList = document.getElementById("modal-songlist");
-console.log("mSongList: ", mSongList);
 
 function openModal(songList, currentPlaylist) {
 	// console.log(`SONG LIST: ${songList} \n CURRENT PLAYLIST LIST ${currentPlaylist}`);
 
 	for (let i = 0; i < songList.length; i++) {
 		let song = songList[i];
+		let shuffleToggle = false;
+
+		document.getElementById('playlistName').innerText = currentPlaylist.playlist_name;
+		document.getElementById('playlistImageM').src = currentPlaylist.playlist_art;
+		document.getElementById('playlistCreator').innerText = `Playlist by: ${currentPlaylist.playlist_creator}`;
 
 		let songHolder = document.createElement("div");
 		songHolder.classList.add("modal-song");
+		songHolder.id = `${song.songID}`;
 		songHolder.innerHTML = `
 				<img id="albumImage" src="${song.cover_art}" alt="Album Image">
 				<div class="modal-song-text">
@@ -76,20 +89,47 @@ function openModal(songList, currentPlaylist) {
 				</div>
 				<div id="songDuration">${song.duration}</div>
 			`;
-		mSongList.appendChild(songHolder);
+				 // <div id="">ID# ${song.songID}</div>
 
-		document.getElementById('playlistName').innerText = currentPlaylist.playlist_name;
-		document.getElementById('playlistImageM').src = currentPlaylist.playlist_art;
-		document.getElementById('playlistCreator').innerText = `Playlist by: ${currentPlaylist.playlist_creator}`;
+		let suffleBtn = document.getElementById("shuffleBtn");
+
+		suffleBtn.onclick = function() {
+			//whatever i'm getting this to work some other day ( -A-) =3
+
+			
+			// Wikipedia plz help me out with this Fisher–Yates shuffle...
+			// -- To shuffle an array a of n elements (indices 0..n-1):
+			// for i from 0 to n−2 do
+			// 		 j ← random integer such that i ≤ j < n
+			// 		 exchange a[i] and a[j]
+
+			// for (let i = 0; i < songList.length - 1; i++) {
+			// 	let j = Math.floor(Math.random() * (songList.length - i)) + i;
+			// 	let temp = songList[i];
+			// 	songList[i] = songList[j];
+			// 	songList[j] = temp;
+			// console.log(temp);
+			// }
+			
+			shuffleToggle = true;
+		}
+
+		if (shuffleToggle === true) {
+			removeSongs();
+			mSongList.appendChild(songHolder);
+		} else {
+			mSongList.appendChild(songHolder);
+		}
 	}
 
+
 	modal.style.display = "block";
-	console.log("mSongList: ", mSongList);
+	// console.log("mSongList: ", mSongList);
 }
 
 function removeSongs() {
-	while (mSongList.firstChild) { 
-		mSongList.firstChild.remove(); 
+	while (mSongList.firstChild) {
+		mSongList.firstChild.remove();
 	}
 }
 
@@ -105,14 +145,24 @@ window.onclick = function(event) {
 	}
 }
 
+//Suffle thing - randomization of ids?
+// function shuffleToggle(playlist) {
+// 	randomNumber = Math.floor(Math.random() * 18);
+
+// 	return false, randomNumber;	
+// }
+
+
 
 // BUTTON THINGS - Code for the like button
-let button = document.getElementById("likeCountBtn");
-let count = document.getElementById("likeCount");
-
-function counter() {
-	let currentCount = parseInt(count.innerText);
-	count.innerText = currentCount + 1;
+function increaseLikeCount(playlist) {
+	let currentCount = playlist.likeCount;
+	currentCount = currentCount + 1;
+	playlist.likeCount = currentCount;
 }
 
-// button.addEventListener("click", counter);
+function decreaseLikeCount(playlist) {
+	let currentCount = playlist.likeCount;
+	currentCount = currentCount - 1;
+	playlist.likeCount = currentCount;
+}
