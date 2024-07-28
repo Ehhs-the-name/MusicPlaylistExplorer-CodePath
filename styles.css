@@ -1,0 +1,154 @@
+body {
+	font-family: 'Arial', sans-serif;
+	margin: 0;
+	padding: 0;
+	background-color: #f8f8f8;
+}
+
+.header {
+	margin-bottom: 2em;
+	padding: 30px 100px;
+	background-color: #ddd;
+	color: #4a1a55;
+	border-bottom: #4a1a55 solid 1px;
+	font-weight: 800;
+}
+
+.footer {
+	margin-top: 2em;
+	padding: 20px;
+	background-color: #ddd;
+	color: #4a1a55;
+	border-top: #4a1a55 solid 1px;
+}
+
+button {
+	width: 2.5rem;
+}
+
+.button-holder {
+	margin-left: auto;
+}
+
+#likeCount {
+	margin-right: 5px;
+}
+
+.playlist-cards {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	grid-gap: 40px;
+}
+
+.playlist-card {
+	border: #bf9fc6 solid 1px;
+	border-radius: 1rem;
+	margin: 20px;
+	padding: 1rem;
+	display: flex;
+	flex-flow: column;
+	align-content: flex-start;
+}
+
+.playlist-title {
+	font-size: 1.5rem;
+	font-weight: bold;
+	margin: 0.5rem auto;
+}
+
+.playlist-artist {
+	font-size: 1rem;
+	color: #6e5473;
+	margin: 0.5rem auto;
+}
+
+/* Modal things */
+.modal {
+	 display: none; /* Hidden by default */
+	 position: fixed; /* Stay in place */
+	 z-index: 1; /* Sit on top */
+	 left: 0;
+	 top: 0;
+	 width: 100%; /* Full width */
+	 height: 100%; /* Full height */
+	 overflow: hidden; /* Enable scroll if needed */
+	 background-color: rgb(15, 0, 30,0.4); /* Black w/ opacity */
+}
+.modal-content {
+	 background-color: #fefefe;
+	 margin: 10% auto; /* 15% from the top and centered */
+	 padding: 20px;
+	 border: 1px solid #888;
+	 border-radius: 2rem;
+	 width: 80%; /* Could be more or less, depending on screen size */
+	max-height: 65%;
+	overflow-y: auto;
+}
+.close {
+	 color: #a72da9;
+	 float: right;
+	 font-size: 28px;
+	 font-weight: bold;
+}
+.close:hover,
+.close:focus {
+	 color: #4a1a55;
+	 text-decoration: none;
+	 cursor: pointer;
+}
+
+#modal-container-all {
+	margin: 2rem 6rem;
+}
+
+.modal-content-top {
+	display: flex;
+	margin-bottom: 1rem;
+}
+
+.modal-content-top img {
+	/* width: 18em; */
+	padding: 15px;
+}
+
+.modal-content-top-text {
+	margin: 1rem 3rem;
+}
+
+.modal-content-top-text > h2 {
+	font-size: 2.2rem;
+	margin-bottom: 0px;
+}
+
+.modal-content-top-text > p {
+	font-size: 1.3rem;
+	margin-top: 0.75rem;
+}
+
+.modal-songlist {
+	display: flex;
+	flex-flow: column nowrap;
+	padding: 1rem 0;
+}
+
+.modal-song {
+	display: flex;
+	flex-flow: row nowrap;
+	align-items: center;
+	border: #4a1a55 solid 1px;
+	border-radius: 0.35rem;
+	padding: 8px 15px;
+	margin-bottom: 1rem;
+}
+
+.modal-song img {
+	max-height: 100px;
+}
+
+.modal-song-text > * {
+	margin: 4px 2rem;
+}
+
+#songDuration {
+	margin-left: auto
+}

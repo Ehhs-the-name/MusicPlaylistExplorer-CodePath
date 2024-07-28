@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Music Playlist Explorer</title>
+    <link rel="icon" type="image/x-icon" href="./assets/img/favicon.ico">
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header class="header" id="header">
+        <h1>Music Player Explorer</h1>
+    </header>
+
+    <main>
+        <div class="playlist-cards" id="playlistCards"></div>
+
+        <div class="modal" id="songModal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <div id="modal-container-all">
+
+                    <div class="modal-content-top">
+                        <img id="playlistImageM" src="" alt="Playlist Image">
+                        <div class="modal-content-top-text">
+                            <h2 id="playlistName"></h2>
+                            <p id="playlistCreator"></p>
+                        </div>
+                    </div>
+
+                    <div class="modal-songlist" id="modal-songlist"></div>
+                </div>
+            </div>
+        </div>
+
+        <div
+            onclick="openModal({pName: 'How to Rule the World', pImageUrl: 'https://placehold.co/350x250', pCreator: 'xxxPeenFart69xxx', sName: 'Summer Beats Festival', sImageUrl: 'https://placehold.co/100x75', artist: 'Lemon Demon', album: 'Dinorchestra', duration: '2:35'})">
+            Click here for festival details!
+        </div>
+
+    </main>
+
+    <footer class="footer" id="footer">
+        <!-- Your footer content here -->
+    </footer>
+    <script src="data/data.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
